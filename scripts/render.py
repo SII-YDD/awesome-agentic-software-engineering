@@ -9,10 +9,10 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = {
-    "coding-agents": "Coding Agents · 自主编程与协作",
-    "software-engineering": "AI Software Engineering · 测试、调试与评测",
-    "vulnerability-discovery": "Agentic Vulnerability Discovery · 漏洞发现与修复",
-    "agent-security": "Agent Security & Reliability · Agent 安全与可靠性",
+    "coding-agents": "Coding Agents",
+    "software-engineering": "AI Software Engineering",
+    "vulnerability-discovery": "Vulnerability Discovery",
+    "agent-security": "Agent Security",
 }
 
 
@@ -32,6 +32,8 @@ def validate(data):
             assert item.get(key), (item.get("id"), key)
         assert re.fullmatch(r"[a-z0-9-]+", item["id"])
         assert item["category"] in CATEGORIES
+        assert not any(sep in item["institution"] for sep in (" / ", " · ", ";", "；")), "Credit one institution only"
+        assert "\n" not in item["summary"] and len(item["summary"]) <= 100, "Use one concise sentence"
         assert item["evidence_status"] in ("author-reported", "independently-reproduced")
         for field in ("publication_date", "added_date", "updated_date"):
             valid_date(item[field])
@@ -56,86 +58,65 @@ def validate(data):
     assert data["entries"], "Catalog must not be empty"
 
 
-def cell(value):
-    return value.replace("|", "\\|").replace("\n", " ")
+def compact_links(item):
+    """Show only distinct code/artifact and author-blog links on the homepage."""
+    output = []
+    for link in item["links"]:
+        label = link["label"]
+        if "报名" in label or "FAQ" in label or link["url"] == item["canonical_url"]:
+            continue
+        if "博客" in label:
+            output.append(f"[Blog]({link['url']})")
+        elif "实验材料" in label:
+            output.append(f"[Artifacts]({link['url']})")
+        elif "代码" in label:
+            output.append(f"[Code]({link['url']})")
+    return " · ".join(output)
 
 
 def render(data):
     entries = sorted(data["entries"], key=lambda item: (item["publication_date"], item["title"]), reverse=True)
     lines = [
-        "# Awesome Agentic Software Engineering",
+        '<h1 align="center">Awesome Agentic Software Engineering</h1>',
         "",
-        "[![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) [![License: CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](LICENSE)",
+        '<p align="center">Coding Agents · AI Software Engineering · Agent Security</p>',
         "",
-        "> A curated reading list of coding agents, AI software engineering, and agentic vulnerability research — with Chinese technical notes and explicit evidence limits.",
+        '<p align="center">',
+        '  <a href="https://github.com/sindresorhus/awesome"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>',
+        f'  <a href="data/entries.json"><img src="https://img.shields.io/badge/papers_%26_blogs-{len(entries)}-6366f1?style=flat-square" alt="Papers and blogs: {len(entries)}"></a>',
+        f'  <a href="updates/"><img src="https://img.shields.io/badge/updated-{data["last_updated"].replace("-", "--")}-14b8a6?style=flat-square" alt="Updated: {data["last_updated"]}"></a>',
+        '</p>',
         "",
-        "精选 Coding Agent、AI 软件工程、Agent 漏洞发现与安全研究的一手论文和技术博客。每项提供团队、首发日期、核心方法、原文/材料链接和证据边界，方便阅读与复现。",
-        "",
-        f"**最近更新：{data['last_updated']}（Asia/Shanghai） · {len(entries)} 项成果**。每日北京时间 09:00 的研究阅读任务同步维护本清单；合格新成果不足时保留实际数量。最后更新时间代表成功维护日期，不承诺每日都有新论文。",
-        "",
-        "## Contents",
-        "",
-        "- [Latest additions · 最近收录](#latest-additions)",
+        '<p align="center">',
+        '  <a href="#coding-agents">Coding Agents</a> &nbsp;·&nbsp;',
+        '  <a href="#software-engineering">Software Engineering</a> &nbsp;·&nbsp;',
+        '  <a href="#vulnerability-discovery">Vulnerability Discovery</a> &nbsp;·&nbsp;',
+        '  <a href="#agent-security">Agent Security</a>',
+        '</p>',
     ]
-    lines += [f"- [{name}](#{slug})" for slug, name in CATEGORIES.items()]
-    lines += [
-        "- [Selection & update rules · 收录与更新规则](#selection-rules)",
-        "- [更新记录](updates/) · [结构化数据](data/entries.json) · [贡献指南](CONTRIBUTING.md)",
-        "",
-        '<a id="latest-additions"></a>',
-        "",
-        "## Latest additions · 最近收录",
-        "",
-        "按收录日期排序，同日按原始发布日期排序；收录时间与研究首发时间分别展示。",
-        "",
-        "| 收录日期 | 研究首发 | 成果 | 团队 |",
-        "| --- | --- | --- | --- |",
-    ]
-    latest = sorted(entries, key=lambda item: (item["added_date"], item["publication_date"], item["title"]), reverse=True)[:6]
-    for item in latest:
-        lines.append(f"| {item['added_date']} | {item['publication_date']} | [{cell(item['title'])}](#{item['id']}) | {cell(item['institution'])} |")
     for slug, name in CATEGORIES.items():
         lines += ["", f'<a id="{slug}"></a>', "", f"## {name}", ""]
         for item in entries:
             if item["category"] != slug:
                 continue
-            links = " · ".join(f"[{link['label']}]({link['url']})" for link in item["links"])
-            dates = item["publication_date"]
-            if item.get("blog_publication_date"):
-                dates += f"；作者博客 {item['blog_publication_date']}"
+            metadata = f"`{item['publication_date']}` · {item['institution']}"
+            links = compact_links(item)
+            if links:
+                metadata += " · " + links
             lines += [
-                f'<a id="{item["id"]}"></a>',
-                "",
-                f"- **[{item['title']}]({item['canonical_url']})**",
-                f"  - **团队 / 首发 / 类型：** {item['institution']} · {dates} · {item['type']}",
-                f"  - **核心：** {item['summary']}",
-                f"  - **证据边界：** {item['caveat']}",
-                f"  - **阅读范围：** {item['reading_scope']}；" + ("独立复现（见所附记录）。" if item['evidence_status'] == 'independently-reproduced' else "结论及数字来自作者，未独立复跑。"),
-                f"  - **材料：** {links}",
+                f"- **[{item['title']}]({item['canonical_url']})** · {metadata}<br>{item['summary']}",
                 "",
             ]
     lines += [
-        '<a id="selection-rules"></a>',
+        "---",
         "",
-        "## Selection & update rules · 收录与更新规则",
+        '<p align="center">',
+        '  <a href="updates/">Changelog</a> &nbsp;·&nbsp;',
+        '  <a href="CONTRIBUTING.md">Contribute</a> &nbsp;·&nbsp;',
+        '  <a href="LICENSE">CC0 1.0</a>',
+        '</p>',
         "",
-        "1. **一手来源。** 官方研究博客、作者/实验室论文、正式会议论文和关联官方代码；明确团队署名与发布日期。预印本单独标明，未经核实不写已录用。",
-        "2. **技术价值。** 要有具体问题、方法与可核查证据。机构声誉只作筛选线索；不收营销公告、转载、无研究支撑的新闻，不给无依据的热度排名。",
-        "3. **优先最新。** 日常检索优先最近 72 小时，必要时扩大至 7/14 天；按首次研究发布记录日期。新博客解读旧论文不会变成第二篇成果，重大更新须说明新增证据。",
-        "4. **可解释与可核查。** 阅读方法和实验后写简明原创说明，区分作者报告、独立验证与个人判断。只做初步阅读的条目明确标注，不宣称通读。",
-        "5. **按成果去重。** 使用规范原文 URL 和 arXiv ID；同一成果的博客、论文和代码放在同一条。每项归入一个主要分类，交叉主题可在数据标签中检索。",
-        "6. **保持证据口径。** 写清样本、基线、指标、成本与适用条件；崩溃、漏洞、CVE、已确认报告与合并修复不互相替代。代码链接注明是完整实现、实验材料还是报名入口。",
-        "7. **可追踪维护。** 数据更新后重新生成主页，保留按日更新记录；没有合格新成果不凑数。链接失效记录原因并寻找规范迁移地址，不凭猜测换链接。",
-        "",
-        "持续关注 OpenAI、Anthropic、Google DeepMind / Research、Microsoft Research / FORGE、Meta、NVIDIA，以及 UIUC、Stanford、MIT、CMU、UC Berkeley、ETH Zürich 等同级研究团队。该关注列表不表示仓库已收录各机构成果，也不代表任何机构背书。",
-        "",
-        "本仓库由维护者使用 AI 辅助检索与整理。启动清单来自 2026-10-12 至 2026-10-14 的研究阅读记录，属于持续扩展的精选集。欢迎通过 [贡献指南](CONTRIBUTING.md) 提交更正和有证据的新成果。",
-        "",
-        "## License",
-        "",
-        "本仓库原创整理与脚本采用 [CC0 1.0](LICENSE)。所链接论文、代码、商标及图像遵循各自原作者的许可。",
-        "",
-        "<!-- Generated from data/entries.json by scripts/render.py. Edit data first. -->",
+        "<!-- Generated from data/entries.json by scripts/render.py. -->",
     ]
     return "\n".join(lines) + "\n"
 
