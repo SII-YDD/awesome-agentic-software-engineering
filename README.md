@@ -1,6 +1,7 @@
-<h1 align="center">Awesome Agentic Software Engineering</h1>
-
-<p align="center">Coding Agents · AI Software Engineering · Agent Security</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <img src="assets/hero-light.svg" alt="Awesome Agentic Software Engineering — Code · Build · Secure" width="100%">
+</picture>
 
 <p align="center">
   <a href="https://github.com/sindresorhus/awesome"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
@@ -8,53 +9,70 @@
   <a href="updates/"><img src="https://img.shields.io/badge/updated-2026--10--14-14b8a6?style=flat-square" alt="Updated: 2026-10-14"></a>
 </p>
 
-<p align="center">
-  <a href="#coding-agents">Coding Agents</a> &nbsp;·&nbsp;
-  <a href="#software-engineering">Software Engineering</a> &nbsp;·&nbsp;
-  <a href="#vulnerability-discovery">Vulnerability Discovery</a> &nbsp;·&nbsp;
-  <a href="#agent-security">Agent Security</a>
-</p>
+<table width="100%">
+  <tr>
+    <td width="50%"><a href="#coding-agents"><b>01 · Coding Agents</b></a><br><sub>1 entry</sub></td>
+    <td width="50%"><a href="#software-engineering"><b>02 · AI Software Engineering</b></a><br><sub>4 entries</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><a href="#vulnerability-discovery"><b>03 · Vulnerability Discovery</b></a><br><sub>2 entries</sub></td>
+    <td width="50%"><a href="#agent-security"><b>04 · Agent Security</b></a><br><sub>4 entries</sub></td>
+  </tr>
+</table>
 
 <a id="coding-agents"></a>
 
-## Coding Agents
+## 01 · Coding Agents
 
-- **[When Sub-Agents Work in Parallel: The Promises and Pitfalls of Dynamic Concurrency in Long-Horizon Coding Tasks](https://arxiv.org/abs/2610.10263)** · `2026-10-07` · Nanjing University · [Artifacts](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)<br>对照编程 Agent 的串行与并发执行，揭示协作收益、协调失败与资源代价。
+<table width="100%">
+  <thead><tr><th width="17%">Date · Org</th><th width="73%">Research</th><th width="10%" align="center">Links</th></tr></thead>
+  <tbody>
+    <tr><td valign="top"><code>2026-10-07</code><br><sub>Nanjing University</sub></td><td><b><a href="https://arxiv.org/abs/2610.10263" title="When Sub-Agents Work in Parallel: The Promises and Pitfalls of Dynamic Concurrency in Long-Horizon Coding Tasks">When Sub-Agents Work in Parallel</a></b><br>对照编程 Agent 的串行与并发执行，揭示协作收益、协调失败与资源代价。</td><td align="center"><a href="https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact">Artifacts</a></td></tr>
+  </tbody>
+</table>
 
 
 <a id="software-engineering"></a>
 
-## AI Software Engineering
+## 02 · AI Software Engineering
 
-- **[TestSuiteBench: Coding Agents Struggle to Generate Strong Test Suites from Specifications](https://arxiv.org/abs/2610.13065)** · `2026-10-09` · ETH Zürich · [Blog](https://logicstar.ai/blog/testsuitebench) · [Code](https://github.com/eth-sri/testsuitebench)<br>评测 Agent 从需求生成完整测试套件的能力，区分测试有效性与错误检出能力。
-
-- **[AgentSWE: Can Coding Agents Build the Agent You Actually Want?](https://arxiv.org/abs/2610.13361)** · `2026-10-09` · BAAI · [Code](https://github.com/VectorSpaceLab/AgentSWE)<br>用隐藏需求案例验收 Coding Agent 创建、修改和优化的 Agent 交付物。
-
-- **[ReviewBench: An open benchmark for AI code review](https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/)** · `2026-10-05` · GitHub · [Code](https://github.com/review-bench/ReviewBench)<br>构建真实 PR 的代码审查基准，评估 Agent 发现问题的准确性与覆盖能力。
-
-- **[Complex Agents, Shallow Tests: Demystifying and Enhancing Test Adequacy of Agent Harness in the Wild](https://arxiv.org/abs/2610.04921)** · `2026-10-04` · UIUC · [Artifacts](https://github.com/yifanxiong272/harnesstester_artifact)<br>依据组件交互契约生成测试，发现 Agent 运行框架中的隐藏缺陷。
+<table width="100%">
+  <thead><tr><th width="17%">Date · Org</th><th width="73%">Research</th><th width="10%" align="center">Links</th></tr></thead>
+  <tbody>
+    <tr><td valign="top"><code>2026-10-09</code><br><sub>ETH Zürich</sub></td><td><b><a href="https://arxiv.org/abs/2610.13065" title="TestSuiteBench: Coding Agents Struggle to Generate Strong Test Suites from Specifications">TestSuiteBench</a></b><br>评测 Agent 从需求生成完整测试套件的能力，区分测试有效性与错误检出能力。</td><td align="center"><a href="https://logicstar.ai/blog/testsuitebench">Blog</a><br><a href="https://github.com/eth-sri/testsuitebench">Code</a></td></tr>
+    <tr><td valign="top"><code>2026-10-09</code><br><sub>BAAI</sub></td><td><b><a href="https://arxiv.org/abs/2610.13361" title="AgentSWE: Can Coding Agents Build the Agent You Actually Want?">AgentSWE</a></b><br>用隐藏需求案例验收 Coding Agent 创建、修改和优化的 Agent 交付物。</td><td align="center"><a href="https://github.com/VectorSpaceLab/AgentSWE">Code</a></td></tr>
+    <tr><td valign="top"><code>2026-10-05</code><br><sub>GitHub</sub></td><td><b><a href="https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/" title="ReviewBench: An open benchmark for AI code review">ReviewBench</a></b><br>构建真实 PR 的代码审查基准，评估 Agent 发现问题的准确性与覆盖能力。</td><td align="center"><a href="https://github.com/review-bench/ReviewBench">Code</a></td></tr>
+    <tr><td valign="top"><code>2026-10-04</code><br><sub>UIUC</sub></td><td><b><a href="https://arxiv.org/abs/2610.04921" title="Complex Agents, Shallow Tests: Demystifying and Enhancing Test Adequacy of Agent Harness in the Wild">HarnessTester</a></b><br>依据组件交互契约生成测试，发现 Agent 运行框架中的隐藏缺陷。</td><td align="center"><a href="https://github.com/yifanxiong272/harnesstester_artifact">Artifacts</a></td></tr>
+  </tbody>
+</table>
 
 
 <a id="vulnerability-discovery"></a>
 
-## Vulnerability Discovery
+## 03 · Vulnerability Discovery
 
-- **[Launching an opt-in vulnerability-finding service for open-source software](https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source)** · `2026-10-08` · Anthropic<br>离线审计开源仓库，生成漏洞复现证据和候选修复方案。
-
-- **[3 lessons from frontier AI vulnerability research](https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/)** · `2026-10-07` · Microsoft<br>将漏洞发现、可执行验证与修复反馈串成闭环，提升安全研究的有效产出。
+<table width="100%">
+  <thead><tr><th width="17%">Date · Org</th><th width="73%">Research</th><th width="10%" align="center">Links</th></tr></thead>
+  <tbody>
+    <tr><td valign="top"><code>2026-10-08</code><br><sub>Anthropic</sub></td><td><b><a href="https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source" title="Launching an opt-in vulnerability-finding service for open-source software">OSS Scanner</a></b><br>离线审计开源仓库，生成漏洞复现证据和候选修复方案。</td><td align="center">—</td></tr>
+    <tr><td valign="top"><code>2026-10-07</code><br><sub>Microsoft</sub></td><td><b><a href="https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/" title="3 lessons from frontier AI vulnerability research">FORGE / MDASH</a></b><br>将漏洞发现、可执行验证与修复反馈串成闭环，提升安全研究的有效产出。</td><td align="center">—</td></tr>
+  </tbody>
+</table>
 
 
 <a id="agent-security"></a>
 
-## Agent Security
+## 04 · Agent Security
 
-- **[AI models may be capable of self-replicating without access to a datacenter](https://www.anthropic.com/research/self-replicating-ai)** · `2026-10-12` · Anthropic<br>在陌生硬件与简化集群中测试模型部署、复制和长任务恢复能力。
-
-- **[X-AgentRed: Red-Teaming Personal Agents in Evolving Multi-Service Ecosystems](https://arxiv.org/abs/2610.13886)** · `2026-10-09` · Meta Reality Labs Research<br>利用工具依赖图与执行反馈，发现跨服务组合导致的 Agent 安全失效。
-
-- **[Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems](https://arxiv.org/abs/2610.12822)** · `2026-10-09` · Meta Superintelligence Labs<br>研究评测作弊如何通过代码、记忆和计划在多 Agent 系统中传播。
-
-- **[Investigating unintended model actions in our evaluations and internal use](https://www.anthropic.com/research/investigating-unintended-model-actions)** · `2026-10-09` · Anthropic<br>分析 Agent 在受阻任务中采取意外动作的原因，并评估防护措施。
+<table width="100%">
+  <thead><tr><th width="17%">Date · Org</th><th width="73%">Research</th><th width="10%" align="center">Links</th></tr></thead>
+  <tbody>
+    <tr><td valign="top"><code>2026-10-12</code><br><sub>Anthropic</sub></td><td><b><a href="https://www.anthropic.com/research/self-replicating-ai" title="AI models may be capable of self-replicating without access to a datacenter">Self-Replicating AI</a></b><br>在陌生硬件与简化集群中测试模型部署、复制和长任务恢复能力。</td><td align="center">—</td></tr>
+    <tr><td valign="top"><code>2026-10-09</code><br><sub>Meta Reality Labs Research</sub></td><td><b><a href="https://arxiv.org/abs/2610.13886" title="X-AgentRed: Red-Teaming Personal Agents in Evolving Multi-Service Ecosystems">X-AgentRed</a></b><br>利用工具依赖图与执行反馈，发现跨服务组合导致的 Agent 安全失效。</td><td align="center">—</td></tr>
+    <tr><td valign="top"><code>2026-10-09</code><br><sub>Meta Superintelligence Labs</sub></td><td><b><a href="https://arxiv.org/abs/2610.12822" title="Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems">Transmissible Reward Hacking</a></b><br>研究评测作弊如何通过代码、记忆和计划在多 Agent 系统中传播。</td><td align="center">—</td></tr>
+    <tr><td valign="top"><code>2026-10-09</code><br><sub>Anthropic</sub></td><td><b><a href="https://www.anthropic.com/research/investigating-unintended-model-actions" title="Investigating unintended model actions in our evaluations and internal use">Unintended Model Actions</a></b><br>分析 Agent 在受阻任务中采取意外动作的原因，并评估防护措施。</td><td align="center">—</td></tr>
+  </tbody>
+</table>
 
 ---
 

@@ -26,7 +26,8 @@
           "url": "https://github.com/review-bench/ReviewBench"
         }
       ],
-      "institution_source": "https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/"
+      "institution_source": "https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/",
+      "display_title": "ReviewBench"
     },
     {
       "id": "oss-scanner",
@@ -56,7 +57,8 @@
           "url": "https://github.com/anthropics/oss-scanner"
         }
       ],
-      "institution_source": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source"
+      "institution_source": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source",
+      "display_title": "OSS Scanner"
     },
     {
       "id": "unintended-model-actions",
@@ -83,7 +85,8 @@
           "url": "https://www.anthropic.com/research/investigating-unintended-model-actions"
         }
       ],
-      "institution_source": "https://www.anthropic.com/research/investigating-unintended-model-actions"
+      "institution_source": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+      "display_title": "Unintended Model Actions"
     },
     {
       "id": "dynamic-concurrency",
@@ -117,7 +120,8 @@
       "paper_id": "2610.10263",
       "version": "v1",
       "first_author": "Han Li",
-      "institution_source": "https://arxiv.org/html/2610.10263v1"
+      "institution_source": "https://arxiv.org/html/2610.10263v1",
+      "display_title": "When Sub-Agents Work in Parallel"
     },
     {
       "id": "harnesstester",
@@ -151,7 +155,8 @@
       "paper_id": "2610.04921",
       "version": "v1",
       "first_author": "Yifan Xiong",
-      "institution_source": "https://arxiv.org/html/2610.04921v1"
+      "institution_source": "https://arxiv.org/html/2610.04921v1",
+      "display_title": "HarnessTester"
     },
     {
       "id": "testsuitebench",
@@ -190,7 +195,8 @@
       "version": "v1",
       "blog_publication_date": "2026-10-12",
       "first_author": "Kazuki Egashira",
-      "institution_source": "https://arxiv.org/html/2610.13065v1"
+      "institution_source": "https://arxiv.org/html/2610.13065v1",
+      "display_title": "TestSuiteBench"
     },
     {
       "id": "forge-mdash-update",
@@ -218,7 +224,8 @@
         }
       ],
       "first_author": "Taesoo Kim",
-      "institution_source": "https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/"
+      "institution_source": "https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/",
+      "display_title": "FORGE / MDASH"
     },
     {
       "id": "transmissible-reward-hacking",
@@ -248,7 +255,8 @@
       "paper_id": "2610.12822",
       "version": "v1",
       "first_author": "Yuepeng Hu",
-      "institution_source": "https://arxiv.org/html/2610.12822v1"
+      "institution_source": "https://arxiv.org/html/2610.12822v1",
+      "display_title": "Transmissible Reward Hacking"
     },
     {
       "id": "self-replicating-ai",
@@ -280,7 +288,8 @@
         "Daniel Freeman"
       ],
       "first_author": "William Zhou",
-      "institution_source": "https://www.anthropic.com/research/self-replicating-ai"
+      "institution_source": "https://www.anthropic.com/research/self-replicating-ai",
+      "display_title": "Self-Replicating AI"
     },
     {
       "id": "x-agentred",
@@ -310,7 +319,8 @@
       "paper_id": "2610.13886",
       "version": "v1",
       "first_author": "Yeonsung Jung",
-      "institution_source": "https://arxiv.org/html/2610.13886v1"
+      "institution_source": "https://arxiv.org/html/2610.13886v1",
+      "display_title": "X-AgentRed"
     },
     {
       "id": "agentswe",
@@ -344,7 +354,8 @@
       "paper_id": "2610.13361",
       "version": "v1",
       "first_author": "Jiahao Wang",
-      "institution_source": "https://arxiv.org/html/2610.13361v1"
+      "institution_source": "https://arxiv.org/html/2610.13361v1",
+      "display_title": "AgentSWE"
     }
   ]
 }

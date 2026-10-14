@@ -4,6 +4,7 @@ import argparse
 import datetime as dt
 import json
 import re
+from html import escape
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -55,6 +56,8 @@ def validate(data):
             assert item["canonical_url"] == "https://arxiv.org/abs/" + item["paper_id"]
             seen_papers.add(item["paper_id"])
         assert "\n" not in item["title"]
+        if item.get("display_title"):
+            assert "\n" not in item["display_title"] and len(item["display_title"]) <= 80
     assert data["entries"], "Catalog must not be empty"
 
 
@@ -66,20 +69,25 @@ def compact_links(item):
         if "报名" in label or "FAQ" in label or link["url"] == item["canonical_url"]:
             continue
         if "博客" in label:
-            output.append(f"[Blog]({link['url']})")
+            output.append(f'<a href="{escape(link["url"], quote=True)}">Blog</a>')
         elif "实验材料" in label:
-            output.append(f"[Artifacts]({link['url']})")
+            output.append(f'<a href="{escape(link["url"], quote=True)}">Artifacts</a>')
         elif "代码" in label:
-            output.append(f"[Code]({link['url']})")
-    return " · ".join(output)
+            output.append(f'<a href="{escape(link["url"], quote=True)}">Code</a>')
+    return "<br>".join(output)
+
+
+def table_text(value):
+    return escape(value).replace("\n", " ")
 
 
 def render(data):
     entries = sorted(data["entries"], key=lambda item: (item["publication_date"], item["title"]), reverse=True)
     lines = [
-        '<h1 align="center">Awesome Agentic Software Engineering</h1>',
-        "",
-        '<p align="center">Coding Agents · AI Software Engineering · Agent Security</p>',
+        '<picture>',
+        '  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">',
+        '  <img src="assets/hero-light.svg" alt="Awesome Agentic Software Engineering — Code · Build · Secure" width="100%">',
+        '</picture>',
         "",
         '<p align="center">',
         '  <a href="https://github.com/sindresorhus/awesome"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>',
@@ -87,26 +95,31 @@ def render(data):
         f'  <a href="updates/"><img src="https://img.shields.io/badge/updated-{data["last_updated"].replace("-", "--")}-14b8a6?style=flat-square" alt="Updated: {data["last_updated"]}"></a>',
         '</p>',
         "",
-        '<p align="center">',
-        '  <a href="#coding-agents">Coding Agents</a> &nbsp;·&nbsp;',
-        '  <a href="#software-engineering">Software Engineering</a> &nbsp;·&nbsp;',
-        '  <a href="#vulnerability-discovery">Vulnerability Discovery</a> &nbsp;·&nbsp;',
-        '  <a href="#agent-security">Agent Security</a>',
-        '</p>',
+        '<table width="100%">',
     ]
-    for slug, name in CATEGORIES.items():
-        lines += ["", f'<a id="{slug}"></a>', "", f"## {name}", ""]
+    categories = list(CATEGORIES.items())
+    for row in range(0, len(categories), 2):
+        lines.append('  <tr>')
+        for index in range(row, min(row + 2, len(categories))):
+            slug, name = categories[index]
+            count = sum(item["category"] == slug for item in entries)
+            quantity = "entry" if count == 1 else "entries"
+            lines.append(f'    <td width="50%"><a href="#{slug}"><b>{index + 1:02d} · {name}</b></a><br><sub>{count} {quantity}</sub></td>')
+        lines.append('  </tr>')
+    lines.append('</table>')
+    for index, (slug, name) in enumerate(categories, 1):
+        lines += ["", f'<a id="{slug}"></a>', "", f"## {index:02d} · {name}", "",
+                  '<table width="100%">',
+                  '  <thead><tr><th width="17%">Date · Org</th><th width="73%">Research</th><th width="10%" align="center">Links</th></tr></thead>',
+                  '  <tbody>']
         for item in entries:
             if item["category"] != slug:
                 continue
-            metadata = f"`{item['publication_date']}` · {item['institution']}"
-            links = compact_links(item)
-            if links:
-                metadata += " · " + links
-            lines += [
-                f"- **[{item['title']}]({item['canonical_url']})** · {metadata}<br>{item['summary']}",
-                "",
-            ]
+            metadata = f"<code>{item['publication_date']}</code><br><sub>{table_text(item['institution'])}</sub>"
+            label = table_text(item.get("display_title", item["title"]))
+            research = f'<b><a href="{escape(item["canonical_url"], quote=True)}" title="{escape(item["title"], quote=True)}">{label}</a></b><br>{table_text(item["summary"])}'
+            lines.append(f'    <tr><td valign="top">{metadata}</td><td>{research}</td><td align="center">{compact_links(item) or "—"}</td></tr>')
+        lines += ['  </tbody>', '</table>', ""]
     lines += [
         "---",
         "",
