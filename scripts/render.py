@@ -84,10 +84,12 @@ def table_text(value):
 def render(data):
     entries = sorted(data["entries"], key=lambda item: (item["publication_date"], item["title"]), reverse=True)
     lines = [
-        '<picture>',
-        '  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">',
-        '  <img src="assets/hero-light.svg" alt="Awesome Agentic Software Engineering — Code · Build · Secure" width="100%">',
-        '</picture>',
+        '<p align="center">',
+        '  <picture>',
+        '    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">',
+        '    <img src="assets/hero-light.svg" alt="Awesome Coding &amp; Security Agents" width="100%">',
+        '  </picture>',
+        '</p>',
         "",
         '<p align="center">',
         '  <a href="https://github.com/sindresorhus/awesome"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>',
@@ -95,7 +97,7 @@ def render(data):
         f'  <a href="updates/"><img src="https://img.shields.io/badge/updated-{data["last_updated"].replace("-", "--")}-14b8a6?style=flat-square" alt="Updated: {data["last_updated"]}"></a>',
         '</p>',
         "",
-        '<table width="100%">',
+        '<table align="center" width="100%">',
     ]
     categories = list(CATEGORIES.items())
     for row in range(0, len(categories), 2):
@@ -104,13 +106,13 @@ def render(data):
             slug, name = categories[index]
             count = sum(item["category"] == slug for item in entries)
             quantity = "entry" if count == 1 else "entries"
-            lines.append(f'    <td width="50%"><a href="#{slug}"><b>{index + 1:02d} · {name}</b></a><br><sub>{count} {quantity}</sub></td>')
+            lines.append(f'    <td width="50%" align="center" valign="middle"><a href="#{slug}"><b>{index + 1:02d} · {name}</b></a><br><sub>{count} {quantity}</sub></td>')
         lines.append('  </tr>')
     lines.append('</table>')
     for index, (slug, name) in enumerate(categories, 1):
-        lines += ["", f'<a id="{slug}"></a>', "", f"## {index:02d} · {name}", "",
-                  '<table width="100%">',
-                  '  <thead><tr><th width="17%">Date · Org</th><th width="73%">Research</th><th width="10%" align="center">Links</th></tr></thead>',
+        lines += ["", f'<a id="{slug}"></a>', "", f'<h2 align="center">{index:02d} · {name}</h2>', "",
+                  '<table align="center" width="100%">',
+                  '  <thead><tr><th width="17%" align="center">Date · Org</th><th width="73%" align="center">Research</th><th width="10%" align="center">Links</th></tr></thead>',
                   '  <tbody>']
         for item in entries:
             if item["category"] != slug:
@@ -118,7 +120,7 @@ def render(data):
             metadata = f"<code>{item['publication_date']}</code><br><sub>{table_text(item['institution'])}</sub>"
             label = table_text(item.get("display_title", item["title"]))
             research = f'<b><a href="{escape(item["canonical_url"], quote=True)}" title="{escape(item["title"], quote=True)}">{label}</a></b><br>{table_text(item["summary"])}'
-            lines.append(f'    <tr><td valign="top">{metadata}</td><td>{research}</td><td align="center">{compact_links(item) or "—"}</td></tr>')
+            lines.append(f'    <tr><td align="center" valign="middle">{metadata}</td><td align="center" valign="middle">{research}</td><td align="center" valign="middle">{compact_links(item) or "—"}</td></tr>')
         lines += ['  </tbody>', '</table>', ""]
     lines += [
         "---",
