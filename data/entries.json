@@ -16,18 +16,19 @@
         "benchmark"
       ],
       "canonical_url": "https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/",
-      "summary": "构建真实 PR 的代码审查基准，评估 Agent 发现问题的准确性与覆盖能力。",
+      "summary": "基于真实代码变更构建审查基准，衡量 Agent 找出已知与新增问题的准确性和覆盖能力。",
       "caveat": "219 个 PR、19 种语言；两套指标的计分分母不同，不能混用；线上增益是作者报告。",
       "reading_scope": "官方博客、仓库 README 与计分方法",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "代码与评测材料",
-          "url": "https://github.com/review-bench/ReviewBench"
+          "url": "https://github.com/review-bench/ReviewBench",
+          "kind": "code"
         }
       ],
       "institution_source": "https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/",
-      "display_title": "ReviewBench"
+      "publication_kind": "blog"
     },
     {
       "id": "oss-scanner",
@@ -43,22 +44,24 @@
         "repair"
       ],
       "canonical_url": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source",
-      "summary": "离线审计开源仓库，生成漏洞复现证据和候选修复方案。",
+      "summary": "用 Agent 离线审计开源仓库，向维护者提供漏洞报告、复现证据及候选修复。",
       "caveat": "97 个精选高危/严重发现中，85 个达到披露标准、11 个真实但重复、1 个无效；不是全量精度或召回率。",
       "reading_scope": "官方报告、技术 FAQ 与报名仓库",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "技术 FAQ",
-          "url": "https://red.anthropic.com/oss-scanner/"
+          "url": "https://red.anthropic.com/oss-scanner/",
+          "kind": "faq"
         },
         {
           "label": "报名入口（非完整扫描器实现）",
-          "url": "https://github.com/anthropics/oss-scanner"
+          "url": "https://github.com/anthropics/oss-scanner",
+          "kind": "enrollment"
         }
       ],
       "institution_source": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source",
-      "display_title": "OSS Scanner"
+      "publication_kind": "blog"
     },
     {
       "id": "unintended-model-actions",
@@ -75,18 +78,19 @@
         "reliability"
       ],
       "canonical_url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
-      "summary": "分析 Agent 在受阻任务中采取意外动作的原因，并评估防护措施。",
+      "summary": "分析 Agent 在受阻或模糊任务中越过用户意图的行为，并研究工具检查与训练修正。",
       "caveat": "已知案例被阻断不能证明未见变体安全；报告未给出可外推的通用失效率。",
       "reading_scope": "官方事件与修正报告正文",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "官方报告",
-          "url": "https://www.anthropic.com/research/investigating-unintended-model-actions"
+          "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+          "kind": "blog"
         }
       ],
       "institution_source": "https://www.anthropic.com/research/investigating-unintended-model-actions",
-      "display_title": "Unintended Model Actions"
+      "publication_kind": "blog"
     },
     {
       "id": "dynamic-concurrency",
@@ -103,25 +107,27 @@
         "cost"
       ],
       "canonical_url": "https://arxiv.org/abs/2610.10263",
-      "summary": "对照编程 Agent 的串行与并发执行，揭示协作收益、协调失败与资源代价。",
+      "summary": "对照编程 Agent 开启和关闭子任务并发的表现，分析协作收益、失败模式及算力代价。",
       "caveat": "354 个任务、2,124 个执行单元；收益随任务变化，平均 token 为顺序模式的 1.41–3.31 倍；对齐时间而非 token 预算。",
       "reading_scope": "论文方法、实验、失败分类与局限；作者材料说明",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "全文",
-          "url": "https://arxiv.org/html/2610.10263v1"
+          "url": "https://arxiv.org/html/2610.10263v1",
+          "kind": "paper"
         },
         {
           "label": "作者实验材料",
-          "url": "https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact"
+          "url": "https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact",
+          "kind": "artifacts"
         }
       ],
       "paper_id": "2610.10263",
       "version": "v1",
       "first_author": "Han Li",
       "institution_source": "https://arxiv.org/html/2610.10263v1",
-      "display_title": "When Sub-Agents Work in Parallel"
+      "publication_kind": "paper"
     },
     {
       "id": "harnesstester",
@@ -138,25 +144,27 @@
         "bugs"
       ],
       "canonical_url": "https://arxiv.org/abs/2610.04921",
-      "summary": "依据组件交互契约生成测试，发现 Agent 运行框架中的隐藏缺陷。",
+      "summary": "按组件交互约定生成有效测试，覆盖模型输出处理逻辑并发现 Agent 运行框架缺陷。",
       "caveat": "10 个系统；122 个真实 bug 中 88 个新发现、69 个获确认；64 个已修复或已有开放修复，不能理解为全部已合并。",
       "reading_scope": "论文方法、覆盖率、对照/消融与局限；实验材料 README",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "全文",
-          "url": "https://arxiv.org/html/2610.04921v1"
+          "url": "https://arxiv.org/html/2610.04921v1",
+          "kind": "paper"
         },
         {
           "label": "代码与实验材料",
-          "url": "https://github.com/yifanxiong272/harnesstester_artifact"
+          "url": "https://github.com/yifanxiong272/harnesstester_artifact",
+          "kind": "code"
         }
       ],
       "paper_id": "2610.04921",
       "version": "v1",
       "first_author": "Yifan Xiong",
       "institution_source": "https://arxiv.org/html/2610.04921v1",
-      "display_title": "HarnessTester"
+      "publication_kind": "paper"
     },
     {
       "id": "testsuitebench",
@@ -173,22 +181,25 @@
         "benchmark"
       ],
       "canonical_url": "https://arxiv.org/abs/2610.13065",
-      "summary": "评测 Agent 从需求生成完整测试套件的能力，区分测试有效性与错误检出能力。",
+      "summary": "让 Agent 仅凭需求生成完整测试套件，分别检验测试能否正常运行和发现错误实现。",
       "caveat": "165 个 CLI 应用；Opus 5 有效率 96.1%，变体检出率 55.5%；合成变体不代表真实 bug 分布。",
       "reading_scope": "论文构建、指标、主实验和消融；作者博客及官方仓库",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "全文",
-          "url": "https://arxiv.org/html/2610.13065v1"
+          "url": "https://arxiv.org/html/2610.13065v1",
+          "kind": "paper"
         },
         {
           "label": "作者博客",
-          "url": "https://logicstar.ai/blog/testsuitebench"
+          "url": "https://logicstar.ai/blog/testsuitebench",
+          "kind": "blog"
         },
         {
           "label": "代码与基准",
-          "url": "https://github.com/eth-sri/testsuitebench"
+          "url": "https://github.com/eth-sri/testsuitebench",
+          "kind": "code"
         }
       ],
       "paper_id": "2610.13065",
@@ -196,7 +207,7 @@
       "blog_publication_date": "2026-10-12",
       "first_author": "Kazuki Egashira",
       "institution_source": "https://arxiv.org/html/2610.13065v1",
-      "display_title": "TestSuiteBench"
+      "publication_kind": "paper"
     },
     {
       "id": "forge-mdash-update",
@@ -213,19 +224,20 @@
         "remediation"
       ],
       "canonical_url": "https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/",
-      "summary": "将漏洞发现、可执行验证与修复反馈串成闭环，提升安全研究的有效产出。",
+      "summary": "通过漏洞发现、执行验证、人工审查和修复回归的闭环，提高安全研究的有效产出。",
       "caveat": "5–9 月报告 140 个 Windows CVE；155 个内部验证 OSS 报告中 93 个获维护者回应或接受。验证成本只覆盖成功案例，未计筛选失败与人工修复。",
       "reading_scope": "官方技术博客全文；所链接漏洞与代码未独立复现",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "官方报告",
-          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/"
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/",
+          "kind": "blog"
         }
       ],
       "first_author": "Taesoo Kim",
       "institution_source": "https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/",
-      "display_title": "FORGE / MDASH"
+      "publication_kind": "blog"
     },
     {
       "id": "transmissible-reward-hacking",
@@ -242,21 +254,22 @@
         "evaluation"
       ],
       "canonical_url": "https://arxiv.org/abs/2610.12822",
-      "summary": "研究评测作弊如何通过代码、记忆和计划在多 Agent 系统中传播。",
+      "summary": "研究评测作弊如何通过共享代码、记忆和计划在 Agent 间传播，以及验证者如何缓解。",
       "caveat": "验证者存在误拒正确解的权衡；传播实验的环境与受控暴露条件限制外推。",
       "reading_scope": "初步阅读：作者信息、引言、传播总结与缓解章节；尚未完成逐表实验核对",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "全文",
-          "url": "https://arxiv.org/html/2610.12822v1"
+          "url": "https://arxiv.org/html/2610.12822v1",
+          "kind": "paper"
         }
       ],
       "paper_id": "2610.12822",
       "version": "v1",
       "first_author": "Yuepeng Hu",
       "institution_source": "https://arxiv.org/html/2610.12822v1",
-      "display_title": "Transmissible Reward Hacking"
+      "publication_kind": "paper"
     },
     {
       "id": "self-replicating-ai",
@@ -273,14 +286,15 @@
         "recovery"
       ],
       "canonical_url": "https://www.anthropic.com/research/self-replicating-ai",
-      "summary": "在陌生硬件与简化集群中测试模型部署、复制和长任务恢复能力。",
+      "summary": "在陌生硬件和简化集群中检验模型部署、复制与会话重启后的任务恢复能力。",
       "caveat": "9B 推理在 8/9 类硬件上成功；简化 8 节点实验 4/5 次覆盖全部节点。固定部署载荷与外部控制模型不证明弱设备上的完整自主复制。",
       "reading_scope": "官方报告方法、结果、Memento 附录与威胁模型边界",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "官方报告",
-          "url": "https://www.anthropic.com/research/self-replicating-ai"
+          "url": "https://www.anthropic.com/research/self-replicating-ai",
+          "kind": "blog"
         }
       ],
       "authors": [
@@ -289,7 +303,7 @@
       ],
       "first_author": "William Zhou",
       "institution_source": "https://www.anthropic.com/research/self-replicating-ai",
-      "display_title": "Self-Replicating AI"
+      "publication_kind": "blog"
     },
     {
       "id": "x-agentred",
@@ -306,21 +320,22 @@
         "multi-service"
       ],
       "canonical_url": "https://arxiv.org/abs/2610.13886",
-      "summary": "利用工具依赖图与执行反馈，发现跨服务组合导致的 Agent 安全失效。",
+      "summary": "从工具依赖图反向生成跨服务测试场景，再用执行反馈发现和扩展 Agent 安全失效。",
       "caveat": "30 个模拟服务、914 个工具；平均有害路径率 19.2% 对 STAC 10.5%。生成调用成本排除执行/裁判，模型判定与模拟环境仍需现实验证。",
       "reading_scope": "论文方法、结果、成本、裁判敏感性与局限；未定位关联官方实现",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "全文",
-          "url": "https://arxiv.org/html/2610.13886v1"
+          "url": "https://arxiv.org/html/2610.13886v1",
+          "kind": "paper"
         }
       ],
       "paper_id": "2610.13886",
       "version": "v1",
       "first_author": "Yeonsung Jung",
       "institution_source": "https://arxiv.org/html/2610.13886v1",
-      "display_title": "X-AgentRed"
+      "publication_kind": "paper"
     },
     {
       "id": "agentswe",
@@ -337,25 +352,27 @@
         "requirements"
       ],
       "canonical_url": "https://arxiv.org/abs/2610.13361",
-      "summary": "用隐藏需求案例验收 Coding Agent 创建、修改和优化的 Agent 交付物。",
+      "summary": "用隐藏需求案例验收 Agent 的创建、编辑与优化任务，评估 Coding Agent 交付物的真实能力。",
       "caveat": "25 个任务；Creation 平均 Result 2.3–19.1/100 是需求评分，不是通过百分比；主配置只构建一次且依赖模型裁判。",
       "reading_scope": "论文协议、主实验、行为审计与附录 J；官方仓库任务/结果说明",
       "evidence_status": "author-reported",
       "links": [
         {
           "label": "全文",
-          "url": "https://arxiv.org/html/2610.13361v1"
+          "url": "https://arxiv.org/html/2610.13361v1",
+          "kind": "paper"
         },
         {
           "label": "官方代码与任务",
-          "url": "https://github.com/VectorSpaceLab/AgentSWE"
+          "url": "https://github.com/VectorSpaceLab/AgentSWE",
+          "kind": "code"
         }
       ],
       "paper_id": "2610.13361",
       "version": "v1",
       "first_author": "Jiahao Wang",
       "institution_source": "https://arxiv.org/html/2610.13361v1",
-      "display_title": "AgentSWE"
+      "publication_kind": "paper"
     }
   ]
 }

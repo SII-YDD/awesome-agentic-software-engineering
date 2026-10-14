@@ -33,6 +33,7 @@ def validate(data):
             assert item.get(key), (item.get("id"), key)
         assert re.fullmatch(r"[a-z0-9-]+", item["id"])
         assert item["category"] in CATEGORIES
+        assert item["publication_kind"] in ("paper", "blog")
         assert not any(sep in item["institution"] for sep in (" / ", " · ", ";", "；")), "Credit one institution only"
         assert "\n" not in item["summary"] and len(item["summary"]) <= 100, "Use one concise sentence"
         assert item["evidence_status"] in ("author-reported", "independently-reproduced")
@@ -56,25 +57,25 @@ def validate(data):
             assert item["canonical_url"] == "https://arxiv.org/abs/" + item["paper_id"]
             seen_papers.add(item["paper_id"])
         assert "\n" not in item["title"]
-        if item.get("display_title"):
-            assert "\n" not in item["display_title"] and len(item["display_title"]) <= 80
+        for link in item["links"]:
+            assert link.get("kind") in ("paper", "code", "blog", "artifacts", "project", "enrollment", "faq")
     assert data["entries"], "Catalog must not be empty"
 
 
-def compact_links(item):
-    """Show only distinct code/artifact and author-blog links on the homepage."""
-    output = []
-    for link in item["links"]:
-        label = link["label"]
-        if "报名" in label or "FAQ" in label or link["url"] == item["canonical_url"]:
+def resource_links(item):
+    """Link the original publication and verified related resources without duplicates."""
+    primary = "Paper" if item["publication_kind"] == "paper" else "Blog"
+    resources = [(primary, item["canonical_url"])]
+    seen = {item["canonical_url"].rstrip("/")}
+    labels = {"code": "Code", "blog": "Blog", "artifacts": "Artifacts", "project": "Project"}
+    priority = {"code": 0, "artifacts": 1, "blog": 2, "project": 3}
+    for link in sorted(item["links"], key=lambda link: priority.get(link["kind"], 4)):
+        kind, url = link["kind"], link["url"]
+        if kind not in labels or url.rstrip("/") in seen:
             continue
-        if "博客" in label:
-            output.append(f'<a href="{escape(link["url"], quote=True)}">Blog</a>')
-        elif "实验材料" in label:
-            output.append(f'<a href="{escape(link["url"], quote=True)}">Artifacts</a>')
-        elif "代码" in label:
-            output.append(f'<a href="{escape(link["url"], quote=True)}">Code</a>')
-    return "<br>".join(output)
+        seen.add(url.rstrip("/"))
+        resources.append((labels[kind], url))
+    return "<br>".join(f'<a href="{escape(url, quote=True)}">{label}</a>' for label, url in resources)
 
 
 def table_text(value):
@@ -112,22 +113,21 @@ def render(data):
     for index, (slug, name) in enumerate(categories, 1):
         lines += ["", f'<a id="{slug}"></a>', "", f'<h2 align="center">{index:02d} · {name}</h2>', "",
                   '<table align="center" width="100%">',
-                  '  <thead><tr><th width="17%" align="center">Date · Org</th><th width="73%" align="center">Research</th><th width="10%" align="center">Links</th></tr></thead>',
+                  '  <thead><tr><th width="17%" align="center">Date · Org</th><th width="68%" align="center">Research</th><th width="15%" align="center">Resources</th></tr></thead>',
                   '  <tbody>']
         for item in entries:
             if item["category"] != slug:
                 continue
             metadata = f"<code>{item['publication_date']}</code><br><sub>{table_text(item['institution'])}</sub>"
-            label = table_text(item.get("display_title", item["title"]))
-            research = f'<b><a href="{escape(item["canonical_url"], quote=True)}" title="{escape(item["title"], quote=True)}">{label}</a></b><br>{table_text(item["summary"])}'
-            lines.append(f'    <tr><td align="center" valign="middle">{metadata}</td><td align="center" valign="middle">{research}</td><td align="center" valign="middle">{compact_links(item) or "—"}</td></tr>')
+            label = table_text(item["title"])
+            research = f'<b><a href="{escape(item["canonical_url"], quote=True)}" title="{escape(item["title"], quote=True)}">{label}</a></b><br><br>{table_text(item["summary"])}'
+            lines.append(f'    <tr><td align="center" valign="middle">{metadata}</td><td align="center" valign="middle">{research}</td><td align="center" valign="middle">{resource_links(item)}</td></tr>')
         lines += ['  </tbody>', '</table>', ""]
     lines += [
         "---",
         "",
         '<p align="center">',
         '  <a href="updates/">Changelog</a> &nbsp;·&nbsp;',
-        '  <a href="CONTRIBUTING.md">Contribute</a> &nbsp;·&nbsp;',
         '  <a href="LICENSE">CC0 1.0</a>',
         '</p>',
         "",
