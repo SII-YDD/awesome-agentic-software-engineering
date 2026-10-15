@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-10-14",
+  "last_updated": "2026-10-15",
   "entries": [
     {
       "id": "reviewbench",
@@ -373,6 +373,115 @@
       "first_author": "Jiahao Wang",
       "institution_source": "https://arxiv.org/html/2610.13361v1",
       "publication_kind": "paper"
+    },
+    {
+      "id": "stateharness",
+      "title": "StateHarness: Maintaining Evolving Project State for Long-Horizon Coding Agents",
+      "institution": "Notre Dame",
+      "first_author": "Chuan Zou",
+      "publication_date": "2026-10-13",
+      "paper_id": "2610.17616",
+      "category": "coding-agents",
+      "tags": [
+        "long-horizon",
+        "project-state",
+        "runtime",
+        "regression"
+      ],
+      "summary": "维护任务假设、变更关系与未完成事项，用运行时简报和诊断支持长任务编程。",
+      "caveat": "作者报告：RefactorBench 完整链完成率29.4%→35.3%；ChainSWE修复率35.1%→39.5%，P2P回归16→23。诊断会话未完全计入统一token成本；ChainSWE是连续会话，不能外推跨会话记忆。作者给出的匿名代码入口返回页面，但本次未核实实现文件。",
+      "reading_scope": "论文方法、主结果、成本及协议附录；代码入口仅确认HTTP返回，未读实现或复跑。",
+      "added_date": "2026-10-15",
+      "updated_date": "2026-10-15",
+      "type": "预印本（同行评审录用未核实）",
+      "canonical_url": "https://arxiv.org/abs/2610.17616",
+      "evidence_status": "author-reported",
+      "publication_kind": "paper",
+      "version": "v1",
+      "institution_source": "https://arxiv.org/html/2610.17616v1",
+      "links": [
+        {
+          "label": "论文全文",
+          "kind": "paper",
+          "url": "https://arxiv.org/html/2610.17616v1"
+        },
+        {
+          "label": "作者公布的代码入口",
+          "kind": "code",
+          "url": "https://anonymous.4open.science/r/StateHarness"
+        }
+      ]
+    },
+    {
+      "id": "specguardbench",
+      "title": "SpecGuardBench: Can Coding Agents Construct Reliable Validation Harnesses from Natural Language Specifications?",
+      "institution": "CUHK-Shenzhen",
+      "first_author": "Zhiqing Zhong",
+      "publication_date": "2026-10-12",
+      "paper_id": "2610.16870",
+      "category": "software-engineering",
+      "tags": [
+        "specification",
+        "validation",
+        "test-generation",
+        "benchmark"
+      ],
+      "summary": "从需求生成可执行验证框架，评估能否检出违规实现并接受符合需求的其他实现。",
+      "caveat": "作者报告291任务来自13个Python仓库，默认80次模型调用；忠实率45.0%–62.9%。有限替代实现只能估计忠实性，且参考实现会诱导过度断言。论文GLM-5.3与公开README及config_eval_example.toml中的glm-5.2端点不同，精确复现需核对。",
+      "reading_scope": "论文方法、结果、消融、局限；官方仓库README及示例配置；未执行实验。",
+      "added_date": "2026-10-15",
+      "updated_date": "2026-10-15",
+      "type": "预印本（同行评审录用未核实）",
+      "canonical_url": "https://arxiv.org/abs/2610.16870",
+      "evidence_status": "author-reported",
+      "publication_kind": "paper",
+      "version": "v1",
+      "institution_source": "https://arxiv.org/html/2610.16870v1",
+      "links": [
+        {
+          "label": "论文全文",
+          "kind": "paper",
+          "url": "https://arxiv.org/html/2610.16870v1"
+        },
+        {
+          "label": "官方代码",
+          "kind": "code",
+          "url": "https://github.com/coxhin/SpecGuardBench"
+        }
+      ]
+    },
+    {
+      "id": "natural-code-transformation",
+      "title": "Natural Code Transformation Confuses Agents in Vulnerability Analysis",
+      "institution": "UChicago",
+      "first_author": "Jie Zhu",
+      "publication_date": "2026-10-09",
+      "paper_id": "2610.14350",
+      "category": "vulnerability-discovery",
+      "tags": [
+        "robustness",
+        "code-transformation",
+        "vulnerability-analysis",
+        "benchmark"
+      ],
+      "summary": "从真实提交提炼功能保持的代码变换，评估漏洞挖掘Agent对代码表达变化的鲁棒性。",
+      "caveat": "作者报告已筛选可解CyberGym子集上GPT-5.6 Sol/Codex成功率63.3%→36.8%；默认$2或100步，变体运行三次。主实验有效样本与附录186任务之间的口径需进一步核对。80%无效复现来自六个选定任务的109条失败轨迹，不是总体误报率。功能等价仅按测试检查，漏洞仍存在，代码改写不是修复。",
+      "reading_scope": "论文方法、主实验、敏感性、失败分析及相关附录；未定位可确认关联的官方实现或博客，未独立复跑。",
+      "added_date": "2026-10-15",
+      "updated_date": "2026-10-15",
+      "type": "预印本（同行评审录用未核实）",
+      "canonical_url": "https://arxiv.org/abs/2610.14350",
+      "evidence_status": "author-reported",
+      "publication_kind": "paper",
+      "version": "v1",
+      "institution_source": "https://arxiv.org/html/2610.14350v1",
+      "links": [
+        {
+          "label": "论文全文",
+          "kind": "paper",
+          "url": "https://arxiv.org/html/2610.14350v1"
+        }
+      ]
     }
   ]
 }

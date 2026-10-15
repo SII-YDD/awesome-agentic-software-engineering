@@ -7,17 +7,17 @@
 
 <p align="center">
   <a href="https://github.com/sindresorhus/awesome"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
-  <a href="data/entries.json"><img src="https://img.shields.io/badge/papers_%26_blogs-11-6366f1?style=flat-square" alt="Papers and blogs: 11"></a>
-  <a href="updates/"><img src="https://img.shields.io/badge/updated-2026--10--14-14b8a6?style=flat-square" alt="Updated: 2026-10-14"></a>
+  <a href="data/entries.json"><img src="https://img.shields.io/badge/papers_%26_blogs-14-6366f1?style=flat-square" alt="Papers and blogs: 14"></a>
+  <a href="updates/"><img src="https://img.shields.io/badge/updated-2026--10--15-14b8a6?style=flat-square" alt="Updated: 2026-10-15"></a>
 </p>
 
 <table align="center" width="100%">
   <tr>
-    <td width="50%" align="center" valign="middle"><a href="#coding-agents"><b>01 · Coding Agents</b></a><br><sub>1 entry</sub></td>
-    <td width="50%" align="center" valign="middle"><a href="#software-engineering"><b>02 · AI Software Engineering</b></a><br><sub>4 entries</sub></td>
+    <td width="50%" align="center" valign="middle"><a href="#coding-agents"><b>01 · Coding Agents</b></a><br><sub>2 entries</sub></td>
+    <td width="50%" align="center" valign="middle"><a href="#software-engineering"><b>02 · AI Software Engineering</b></a><br><sub>5 entries</sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center" valign="middle"><a href="#vulnerability-discovery"><b>03 · Vulnerability Discovery</b></a><br><sub>2 entries</sub></td>
+    <td width="50%" align="center" valign="middle"><a href="#vulnerability-discovery"><b>03 · Vulnerability Discovery</b></a><br><sub>3 entries</sub></td>
     <td width="50%" align="center" valign="middle"><a href="#agent-security"><b>04 · Agent Security</b></a><br><sub>4 entries</sub></td>
   </tr>
 </table>
@@ -29,6 +29,7 @@
 <table align="center" width="100%">
   <thead><tr><th width="17%" align="center">Date · Org</th><th width="68%" align="center">Research</th><th width="15%" align="center">Resources</th></tr></thead>
   <tbody>
+    <tr><td align="center" valign="middle"><code>2026-10-13</code><br><sub>Notre Dame</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.17616" title="StateHarness: Maintaining Evolving Project State for Long-Horizon Coding Agents">StateHarness: Maintaining Evolving Project State for Long-Horizon Coding Agents</a></b><br><br>维护任务假设、变更关系与未完成事项，用运行时简报和诊断支持长任务编程。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.17616">Paper</a><br><a href="https://anonymous.4open.science/r/StateHarness">Code</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-07</code><br><sub>Nanjing University</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.10263" title="When Sub-Agents Work in Parallel: The Promises and Pitfalls of Dynamic Concurrency in Long-Horizon Coding Tasks">When Sub-Agents Work in Parallel: The Promises and Pitfalls of Dynamic Concurrency in Long-Horizon Coding Tasks</a></b><br><br>对照编程 Agent 开启和关闭子任务并发的表现，分析协作收益、失败模式及算力代价。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.10263">Paper</a><br><a href="https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact">Artifacts</a></td></tr>
   </tbody>
 </table>
@@ -41,6 +42,7 @@
 <table align="center" width="100%">
   <thead><tr><th width="17%" align="center">Date · Org</th><th width="68%" align="center">Research</th><th width="15%" align="center">Resources</th></tr></thead>
   <tbody>
+    <tr><td align="center" valign="middle"><code>2026-10-12</code><br><sub>CUHK-Shenzhen</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.16870" title="SpecGuardBench: Can Coding Agents Construct Reliable Validation Harnesses from Natural Language Specifications?">SpecGuardBench: Can Coding Agents Construct Reliable Validation Harnesses from Natural Language Specifications?</a></b><br><br>从需求生成可执行验证框架，评估能否检出违规实现并接受符合需求的其他实现。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.16870">Paper</a><br><a href="https://github.com/coxhin/SpecGuardBench">Code</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-09</code><br><sub>ETH Zürich</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.13065" title="TestSuiteBench: Coding Agents Struggle to Generate Strong Test Suites from Specifications">TestSuiteBench: Coding Agents Struggle to Generate Strong Test Suites from Specifications</a></b><br><br>让 Agent 仅凭需求生成完整测试套件，分别检验测试能否正常运行和发现错误实现。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.13065">Paper</a><br><a href="https://github.com/eth-sri/testsuitebench">Code</a><br><a href="https://logicstar.ai/blog/testsuitebench">Blog</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-09</code><br><sub>BAAI</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.13361" title="AgentSWE: Can Coding Agents Build the Agent You Actually Want?">AgentSWE: Can Coding Agents Build the Agent You Actually Want?</a></b><br><br>用隐藏需求案例验收 Agent 的创建、编辑与优化任务，评估 Coding Agent 交付物的真实能力。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.13361">Paper</a><br><a href="https://github.com/VectorSpaceLab/AgentSWE">Code</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-05</code><br><sub>GitHub</sub></td><td align="center" valign="middle"><b><a href="https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/" title="ReviewBench: An open benchmark for AI code review">ReviewBench: An open benchmark for AI code review</a></b><br><br>基于真实代码变更构建审查基准，衡量 Agent 找出已知与新增问题的准确性和覆盖能力。</td><td align="center" valign="middle"><a href="https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/">Blog</a><br><a href="https://github.com/review-bench/ReviewBench">Code</a></td></tr>
@@ -56,6 +58,7 @@
 <table align="center" width="100%">
   <thead><tr><th width="17%" align="center">Date · Org</th><th width="68%" align="center">Research</th><th width="15%" align="center">Resources</th></tr></thead>
   <tbody>
+    <tr><td align="center" valign="middle"><code>2026-10-09</code><br><sub>UChicago</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.14350" title="Natural Code Transformation Confuses Agents in Vulnerability Analysis">Natural Code Transformation Confuses Agents in Vulnerability Analysis</a></b><br><br>从真实提交提炼功能保持的代码变换，评估漏洞挖掘Agent对代码表达变化的鲁棒性。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.14350">Paper</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-08</code><br><sub>Anthropic</sub></td><td align="center" valign="middle"><b><a href="https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source" title="Launching an opt-in vulnerability-finding service for open-source software">Launching an opt-in vulnerability-finding service for open-source software</a></b><br><br>用 Agent 离线审计开源仓库，向维护者提供漏洞报告、复现证据及候选修复。</td><td align="center" valign="middle"><a href="https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source">Blog</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-07</code><br><sub>Microsoft</sub></td><td align="center" valign="middle"><b><a href="https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/" title="3 lessons from frontier AI vulnerability research">3 lessons from frontier AI vulnerability research</a></b><br><br>通过漏洞发现、执行验证、人工审查和修复回归的闭环，提高安全研究的有效产出。</td><td align="center" valign="middle"><a href="https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/">Blog</a></td></tr>
   </tbody>
