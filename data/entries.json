@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-10-15",
+  "last_updated": "2026-10-16",
   "entries": [
     {
       "id": "reviewbench",
@@ -480,6 +480,122 @@
           "label": "论文全文",
           "kind": "paper",
           "url": "https://arxiv.org/html/2610.14350v1"
+        }
+      ]
+    },
+    {
+      "id": "doc2harness",
+      "title": "Doc2Harness: Benchmarking LLMs on Long-Horizon Harness Engineering of Coding Agents",
+      "first_author": "Yuyao Ge",
+      "institution": "ICT, CAS",
+      "publication_date": "2026-10-14",
+      "paper_id": "2610.20344",
+      "category": "coding-agents",
+      "tags": [
+        "harness-engineering",
+        "benchmark",
+        "permissions",
+        "positive-controls"
+      ],
+      "summary": "让模型根据需求构建编程Agent框架，再用脚本化模拟模型与正向对照验收其行为。",
+      "caveat": "19模型各3次构建，328项测试；最佳53.05%±0.25个百分点为三次构建标准差。每次2小时且最多3次提交，非等token预算。公开仓库仅53计分测试和41正向对照，不能复现完整榜单；模块分散与低分仅相关，非因果。",
+      "reading_scope": "论文任务、输入、测试生成、正向对照、主表、架构分析及局限；作者项目页、官方README与文件清单；未独立执行。",
+      "added_date": "2026-10-16",
+      "updated_date": "2026-10-16",
+      "type": "预印本（同行评审录用未核实）",
+      "canonical_url": "https://arxiv.org/abs/2610.20344",
+      "institution_source": "https://arxiv.org/html/2610.20344v1",
+      "publication_kind": "paper",
+      "evidence_status": "author-reported",
+      "version": "v1",
+      "links": [
+        {
+          "label": "论文全文",
+          "kind": "paper",
+          "url": "https://arxiv.org/html/2610.20344v1"
+        },
+        {
+          "label": "代码与部分测试",
+          "kind": "code",
+          "url": "https://github.com/YuyaoGe/doc2harness"
+        },
+        {
+          "label": "作者项目页与解读",
+          "kind": "project",
+          "url": "https://geyuyao.com/doc2harness/"
+        }
+      ]
+    },
+    {
+      "id": "os-bench-cross-os",
+      "title": "OS-Bench: Evaluating SWE Agents on Cross-OS Code Migration",
+      "first_author": "Qirui Jin",
+      "institution": "Georgia Tech",
+      "publication_date": "2026-10-14",
+      "paper_id": "2610.19368",
+      "category": "software-engineering",
+      "tags": [
+        "cross-platform",
+        "migration",
+        "benchmark",
+        "regression"
+      ],
+      "summary": "通过双系统覆盖差异构造代码迁移任务，要求补丁同时恢复目标平台并保留源平台行为。",
+      "caveat": "140任务/111仓库，91目标Linux和49目标Windows；最佳双平台成功24/91与10/49。100步或模型调用、5小时；方向间任务和框架不同。50目标通过仅22双平台通过，不能把其余全部解释为已确认功能回归。恢复被移除代码非真实从零迁移；只验证测试覆盖行为。",
+      "reading_scope": "论文构建流程、模型配置、主实验、失败分析、局限及预算/评测附录；官方数据页字段和样例；未运行镜像或评测，未定位完整关联评测代码。",
+      "added_date": "2026-10-16",
+      "updated_date": "2026-10-16",
+      "type": "预印本（同行评审录用未核实）",
+      "canonical_url": "https://arxiv.org/abs/2610.19368",
+      "institution_source": "https://arxiv.org/html/2610.19368v1",
+      "publication_kind": "paper",
+      "evidence_status": "author-reported",
+      "version": "v1",
+      "links": [
+        {
+          "label": "论文全文",
+          "kind": "paper",
+          "url": "https://arxiv.org/html/2610.19368v1"
+        },
+        {
+          "label": "官方数据与实验材料",
+          "kind": "artifacts",
+          "url": "https://huggingface.co/datasets/SWE-bench-Live/OS-bench"
+        }
+      ]
+    },
+    {
+      "id": "swe-misbehavior",
+      "title": "SWE-MISBEHAVIOR: Benchmarking and Mitigating Boundary Violations in Software Coding Agents",
+      "first_author": "Do Xuan Trong",
+      "institution": "NUS",
+      "publication_date": "2026-10-13",
+      "paper_id": "2610.18206",
+      "category": "agent-security",
+      "tags": [
+        "action-boundaries",
+        "tool-scaffolding",
+        "misbehavior",
+        "benchmark"
+      ],
+      "summary": "评测编程Agent在代码、文件与系统操作中的越界行为，并按任务选择专用工具来缓解。",
+      "caveat": "7427合成样本；Gemini2.5Flash驱动时11指标非加权均值smolagents12.77%→6.11%、OpenHands18.19%→12.31%，相对降52%/32%，不是任意事件发生比例。摘要OpenHands34%与正文主表32%不一致，采用主表。任务完成裁判人工一致率72%；原生编辑器/Shell可绕过专用工具。关联GitHub仓库核查时size0，无README，非公开完整实现。",
+      "reading_scope": "论文构建、指标、主实验、裁判校准、Code-KIT消融与局限，相关设置/工具/标注附录；核实关联仓库元数据为空；未读实现或复跑。",
+      "announced_repository_url": "https://github.com/dxlong2000/SWE-Misbehavior",
+      "code_status": "author-linked repository is public but empty as checked on 2026-10-16",
+      "added_date": "2026-10-16",
+      "updated_date": "2026-10-16",
+      "type": "预印本（同行评审录用未核实）",
+      "canonical_url": "https://arxiv.org/abs/2610.18206",
+      "institution_source": "https://arxiv.org/html/2610.18206v1",
+      "publication_kind": "paper",
+      "evidence_status": "author-reported",
+      "version": "v1",
+      "links": [
+        {
+          "label": "论文全文",
+          "kind": "paper",
+          "url": "https://arxiv.org/html/2610.18206v1"
         }
       ]
     }
