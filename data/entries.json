@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-10-16",
+  "last_updated": "2026-10-17",
   "entries": [
     {
       "id": "reviewbench",
@@ -598,6 +598,114 @@
           "url": "https://arxiv.org/html/2610.18206v1"
         }
       ]
+    },
+    {
+      "id": "ecdsa-curve-origins",
+      "title": "Claude reveals ECDSA curve origins",
+      "institution": "Anthropic",
+      "first_author": "John Wood",
+      "publication_date": "2026-10-16",
+      "publication_kind": "blog",
+      "type": "官方技术研究博客（非同行评审论文）",
+      "category": "vulnerability-discovery",
+      "tags": [
+        "cryptanalysis",
+        "parameter-provenance",
+        "program-synthesis",
+        "security-research"
+      ],
+      "canonical_url": "https://www.anthropic.com/research/ecdsa-curve-origins",
+      "institution_source": "https://www.anthropic.com/research/ecdsa-curve-origins",
+      "summary": "用模型编写扫描和数学求解程序，重建标准椭圆曲线公开参数的生成来源。",
+      "caveat": "研究公开参数来源，不是ECDSA破解或私钥恢复。内部模型与完整发现框架未公开，半小时为作者个案报告。B-163种子及部分基点等未解；可重建不证明无后门。本次仅本地复算五个博客提供的NIST素数曲线种子向量并匹配，未复现发现过程、基点或独立审计标准文档。",
+      "reading_scope": "官方博客的方法、发现、开放问题、署名与文内复算代码；本地执行五个报告提供的公开种子向量检查；原站直接下载403，正文通过联网阅读工具访问。",
+      "links": [
+        {
+          "kind": "blog",
+          "label": "官方报告与文内复算代码",
+          "url": "https://www.anthropic.com/research/ecdsa-curve-origins"
+        }
+      ],
+      "code_status": "Inline parameter-regeneration snippets only; no associated complete discovery-harness repository verified",
+      "local_verification": {
+        "scope": "Five report-provided public seed vectors only",
+        "checked_date": "2026-10-17",
+        "outcome": "5/5 matched; not a model-discovery replication or security proof"
+      },
+      "added_date": "2026-10-17",
+      "updated_date": "2026-10-17",
+      "evidence_status": "author-reported"
+    },
+    {
+      "id": "p2patch",
+      "title": "P2Patch: Exploit-Guided Vulnerability Repair",
+      "institution": "SFU",
+      "first_author": "Mohsen Iranmanesh",
+      "publication_date": "2026-10-14",
+      "publication_kind": "paper",
+      "type": "预印本（同行评审录用未核实）",
+      "paper_id": "2610.20245",
+      "version": "v1",
+      "category": "vulnerability-discovery",
+      "tags": [
+        "vulnerability-repair",
+        "counterexamples",
+        "adversarial-testing",
+        "held-out-evaluation"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2610.20245",
+      "institution_source": "https://arxiv.org/pdf/2610.20245",
+      "summary": "让漏洞复现与补丁修复交替迭代，将新反例加入修复要求并用独立留出测试验收。",
+      "caveat": "101漏洞实例，主实验Haiku4.5；按实例平均留出覆盖78.1%→84.7%，40残余实例42.1%→62.5%，不是完整修复率。运行模型费用$0.45→$2.09，未按总美元预算配平；补丁验收含双人审查。41%可执行绕过未完全机器验证语义新颖性。公开仓库暂缓18/40残余和4/101原修复覆盖套件，不支持完整榜单复现。",
+      "reading_scope": "论文问题、协议、独立验证定义、主结果/消融/模型和成本分析、局限；PDF首页确认首作者单位；官方README及发布范围；未运行漏洞或修复实验。",
+      "links": [
+        {
+          "kind": "paper",
+          "label": "论文全文",
+          "url": "https://arxiv.org/html/2610.20245v1"
+        },
+        {
+          "kind": "code",
+          "label": "官方实现与部分基准材料",
+          "url": "https://github.com/P2Patch/P2patch"
+        }
+      ],
+      "added_date": "2026-10-17",
+      "updated_date": "2026-10-17",
+      "evidence_status": "author-reported"
+    },
+    {
+      "id": "swe-stream",
+      "title": "SWE-Stream: Scaling Executable Training Data for SWE Agents via Progressive Construction and Elastic Streaming",
+      "institution": "Xiamen University",
+      "first_author": "Chengyang Liu",
+      "publication_date": "2026-10-14",
+      "publication_kind": "paper",
+      "type": "预印本（同行评审录用未核实）",
+      "paper_id": "2610.20193",
+      "version": "v1",
+      "category": "software-engineering",
+      "tags": [
+        "training-data",
+        "task-construction",
+        "streaming",
+        "execution-validation"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2610.20193",
+      "institution_source": "https://arxiv.org/pdf/2610.20193",
+      "summary": "逐步重建和验证开发历史中的训练任务，以异步调度与资源反馈提高可执行数据产出。",
+      "caveat": "80,874任务与118,688成功轨迹；约160M token受控比较Verified45.6%对最强基线43.6%，不应与5.96B训练的69.0%混比。1000候选同资源池吞吐为批处理1.45倍，不等于美元成本同比下降；模型审查有共享盲点，评测仓库排除不消除预训练污染。未定位可确认关联的公开实现或完整数据下载。",
+      "reading_scope": "论文构建/验证/调度、数据来源、训练与效率实验、局限及训练/控制器附录；PDF首页确认作者与机构；未执行系统或训练。",
+      "links": [
+        {
+          "kind": "paper",
+          "label": "全文及方法配置附录",
+          "url": "https://arxiv.org/html/2610.20193v1"
+        }
+      ],
+      "added_date": "2026-10-17",
+      "updated_date": "2026-10-17",
+      "evidence_status": "author-reported"
     }
   ]
 }

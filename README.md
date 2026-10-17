@@ -7,17 +7,17 @@
 
 <p align="center">
   <a href="https://github.com/sindresorhus/awesome"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
-  <a href="data/entries.json"><img src="https://img.shields.io/badge/papers_%26_blogs-17-6366f1?style=flat-square" alt="Papers and blogs: 17"></a>
-  <a href="updates/"><img src="https://img.shields.io/badge/updated-2026--10--16-14b8a6?style=flat-square" alt="Updated: 2026-10-16"></a>
+  <a href="data/entries.json"><img src="https://img.shields.io/badge/papers_%26_blogs-20-6366f1?style=flat-square" alt="Papers and blogs: 20"></a>
+  <a href="updates/"><img src="https://img.shields.io/badge/updated-2026--10--17-14b8a6?style=flat-square" alt="Updated: 2026-10-17"></a>
 </p>
 
 <table align="center" width="100%">
   <tr>
     <td width="50%" align="center" valign="middle"><a href="#coding-agents"><b>01 · Coding Agents</b></a><br><sub>3 entries</sub></td>
-    <td width="50%" align="center" valign="middle"><a href="#software-engineering"><b>02 · AI Software Engineering</b></a><br><sub>6 entries</sub></td>
+    <td width="50%" align="center" valign="middle"><a href="#software-engineering"><b>02 · AI Software Engineering</b></a><br><sub>7 entries</sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center" valign="middle"><a href="#vulnerability-discovery"><b>03 · Vulnerability Discovery</b></a><br><sub>3 entries</sub></td>
+    <td width="50%" align="center" valign="middle"><a href="#vulnerability-discovery"><b>03 · Vulnerability Discovery</b></a><br><sub>5 entries</sub></td>
     <td width="50%" align="center" valign="middle"><a href="#agent-security"><b>04 · Agent Security</b></a><br><sub>5 entries</sub></td>
   </tr>
 </table>
@@ -43,6 +43,7 @@
 <table align="center" width="100%">
   <thead><tr><th width="17%" align="center">Date · Org</th><th width="68%" align="center">Research</th><th width="15%" align="center">Resources</th></tr></thead>
   <tbody>
+    <tr><td align="center" valign="middle"><code>2026-10-14</code><br><sub>Xiamen University</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.20193" title="SWE-Stream: Scaling Executable Training Data for SWE Agents via Progressive Construction and Elastic Streaming">SWE-Stream: Scaling Executable Training Data for SWE Agents via Progressive Construction and Elastic Streaming</a></b><br><br>逐步重建和验证开发历史中的训练任务，以异步调度与资源反馈提高可执行数据产出。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.20193">Paper</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-14</code><br><sub>Georgia Tech</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.19368" title="OS-Bench: Evaluating SWE Agents on Cross-OS Code Migration">OS-Bench: Evaluating SWE Agents on Cross-OS Code Migration</a></b><br><br>通过双系统覆盖差异构造代码迁移任务，要求补丁同时恢复目标平台并保留源平台行为。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.19368">Paper</a><br><a href="https://huggingface.co/datasets/SWE-bench-Live/OS-bench">Artifacts</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-12</code><br><sub>CUHK-Shenzhen</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.16870" title="SpecGuardBench: Can Coding Agents Construct Reliable Validation Harnesses from Natural Language Specifications?">SpecGuardBench: Can Coding Agents Construct Reliable Validation Harnesses from Natural Language Specifications?</a></b><br><br>从需求生成可执行验证框架，评估能否检出违规实现并接受符合需求的其他实现。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.16870">Paper</a><br><a href="https://github.com/coxhin/SpecGuardBench">Code</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-09</code><br><sub>ETH Zürich</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.13065" title="TestSuiteBench: Coding Agents Struggle to Generate Strong Test Suites from Specifications">TestSuiteBench: Coding Agents Struggle to Generate Strong Test Suites from Specifications</a></b><br><br>让 Agent 仅凭需求生成完整测试套件，分别检验测试能否正常运行和发现错误实现。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.13065">Paper</a><br><a href="https://github.com/eth-sri/testsuitebench">Code</a><br><a href="https://logicstar.ai/blog/testsuitebench">Blog</a></td></tr>
@@ -60,6 +61,8 @@
 <table align="center" width="100%">
   <thead><tr><th width="17%" align="center">Date · Org</th><th width="68%" align="center">Research</th><th width="15%" align="center">Resources</th></tr></thead>
   <tbody>
+    <tr><td align="center" valign="middle"><code>2026-10-16</code><br><sub>Anthropic</sub></td><td align="center" valign="middle"><b><a href="https://www.anthropic.com/research/ecdsa-curve-origins" title="Claude reveals ECDSA curve origins">Claude reveals ECDSA curve origins</a></b><br><br>用模型编写扫描和数学求解程序，重建标准椭圆曲线公开参数的生成来源。</td><td align="center" valign="middle"><a href="https://www.anthropic.com/research/ecdsa-curve-origins">Blog</a></td></tr>
+    <tr><td align="center" valign="middle"><code>2026-10-14</code><br><sub>SFU</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.20245" title="P2Patch: Exploit-Guided Vulnerability Repair">P2Patch: Exploit-Guided Vulnerability Repair</a></b><br><br>让漏洞复现与补丁修复交替迭代，将新反例加入修复要求并用独立留出测试验收。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.20245">Paper</a><br><a href="https://github.com/P2Patch/P2patch">Code</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-09</code><br><sub>UChicago</sub></td><td align="center" valign="middle"><b><a href="https://arxiv.org/abs/2610.14350" title="Natural Code Transformation Confuses Agents in Vulnerability Analysis">Natural Code Transformation Confuses Agents in Vulnerability Analysis</a></b><br><br>从真实提交提炼功能保持的代码变换，评估漏洞挖掘Agent对代码表达变化的鲁棒性。</td><td align="center" valign="middle"><a href="https://arxiv.org/abs/2610.14350">Paper</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-08</code><br><sub>Anthropic</sub></td><td align="center" valign="middle"><b><a href="https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source" title="Launching an opt-in vulnerability-finding service for open-source software">Launching an opt-in vulnerability-finding service for open-source software</a></b><br><br>用 Agent 离线审计开源仓库，向维护者提供漏洞报告、复现证据及候选修复。</td><td align="center" valign="middle"><a href="https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source">Blog</a></td></tr>
     <tr><td align="center" valign="middle"><code>2026-10-07</code><br><sub>Microsoft</sub></td><td align="center" valign="middle"><b><a href="https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/" title="3 lessons from frontier AI vulnerability research">3 lessons from frontier AI vulnerability research</a></b><br><br>通过漏洞发现、执行验证、人工审查和修复回归的闭环，提高安全研究的有效产出。</td><td align="center" valign="middle"><a href="https://www.microsoft.com/en-us/security/blog/2026/10/07/3-lessons-from-frontier-ai-vulnerability-research/">Blog</a></td></tr>
